@@ -304,29 +304,28 @@ const BuildHeader: React.FC<BuildHeaderProps> = ({
                 </div>
               )}
 
-              {/*
-              ──────────────────────────────────────────────────────────────────
-              DESIGN ENGINEER TASK
-
-              Replace this placeholder with an expanded view that helps a
-              developer understand what happened in the build, where problems
-              occurred, and what they should inspect next.
-
-              The progress bar above is hidden while this region is open.
-              `buildSteps` (see src/data/mockBuildSteps.ts) is the data source.
-              Each BuildStep can contain nested `jobs` — see types/build.ts.
-              ──────────────────────────────────────────────────────────────────
-              */}
               <div
                 className={`transition-all duration-300 ease-in-out overflow-hidden ${
                   isExpanded ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
                 }`}
-              >
-                {/* ── DESIGN ENGINEER TASK ──
-                    Replace this placeholder with your implementation.
-                    Data source: buildSteps (see src/data/mockBuildSteps.ts).
-                    The transition wrapper above must stay — it powers the animation.
-                    Everything inside is yours to structure however you want. */}
+                >
+
+                {/*
+                ──────────────────────────────────────────────────────────────────
+                DESIGN ENGINEER TASK
+  
+                Replace the placeholder div below with an expanded view that helps a
+                developer understand what happened in the build, where problems
+                occurred, and what they should inspect next.
+                
+                Notes:
+                - The progress bar above is hidden while this region is open.
+                - `buildSteps` (in src/data/mockBuildSteps.ts) is the data source.
+                - Each BuildStep can contain nested `jobs` (in types/build.ts).
+                - Everything inside is yours to structure however you want.
+                ──────────────────────────────────────────────────────────────────
+                */}
+
                 <div className="border-t border-zinc-200 mt-2 px-2 py-6 text-center text-sm text-zinc-400">
                   Your implementation goes here — see AGENTS.md and README.md
                 </div>
