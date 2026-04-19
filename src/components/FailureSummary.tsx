@@ -11,7 +11,7 @@ export function FailureSummary({ step }: FailureSummaryProps) {
 
   return (
     <section
-      aria-label={`Failed step`}
+      aria-label="Failed step"
       className="rounded-md border border-zinc-200/60 bg-white/50 px-2 py-1 shadow-sm mb-1"
     >
       <div className="flex gap-2 items-center">
