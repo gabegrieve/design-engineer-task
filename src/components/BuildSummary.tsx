@@ -7,11 +7,9 @@ export interface BuildSummaryProps {
 }
 
 export function BuildSummary({ buildSteps }: BuildSummaryProps) {
-  const completeSteps = buildSteps?.filter(
-    (step) => step.status === "complete"
-  );
-  const failedSteps = buildSteps?.filter((step) => step.status === "failed");
-  const pendingSteps = buildSteps?.filter((step) => step.status === "pending");
+  const completeSteps = buildSteps.filter((step) => step.status === "complete");
+  const failedSteps = buildSteps.filter((step) => step.status === "failed");
+  const pendingSteps = buildSteps.filter((step) => step.status === "pending");
 
   return (
     <div>
