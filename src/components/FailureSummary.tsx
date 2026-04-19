@@ -31,6 +31,9 @@ export function FailureSummary({ step }: FailureSummaryProps) {
           </span>
         </h4>
       </div>
+
+      {/* TODO: If the step has no jobs, still surface relevant information */}
+
       {step.jobs && (
         <ul className="flex flex-col gap-2 my-2">
           {step.jobs.map((job) => (
@@ -46,9 +49,13 @@ export function FailureSummary({ step }: FailureSummaryProps) {
                 ) : (
                   <CircleDashed className="w-4 h-4 mr-1" aria-hidden />
                 )}
-                <span className="text-xs/4" aria-label={`${job.status} job`}>
+                <span className="text-xs/4" aria-hidden>
                   {job.name}
                 </span>
+                <span
+                  className="sr-only"
+                  aria-label={`${job.name} ${job.status}`}
+                ></span>
               </div>
               {job.status === "failed" && (
                 <div

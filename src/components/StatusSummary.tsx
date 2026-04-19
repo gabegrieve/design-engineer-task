@@ -22,7 +22,7 @@ export function StatusSummary({ status, steps }: StatusSummaryProps) {
             <div
               key={step.id}
               className={`w-8 h-1.5 rounded-sm ${statusColors.baseColorBg}`}
-              aria-label={`${step.status} step`}
+              aria-hidden
             ></div>
           ))}
         </div>
