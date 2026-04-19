@@ -7,6 +7,8 @@ export interface FailureSummaryProps {
 }
 
 export function FailureSummary({ step }: FailureSummaryProps) {
+  const stepStatusColors = getStatusColors(step.status);
+
   return (
     <section
       aria-label={`Failed step`}
@@ -15,20 +17,12 @@ export function FailureSummary({ step }: FailureSummaryProps) {
       <div className="flex gap-2 items-center">
         <div className="flex gap-1 items-center">
           <div
-            className={`w-8 h-1.5 rounded-sm ${
-              getStatusColors(step.status).baseColorBg
-            }`}
+            className={`w-8 h-1.5 rounded-sm ${stepStatusColors.baseColorBg}`}
           ></div>
         </div>
-        <h4
-          className={`text-sm font-medium ${
-            getStatusColors(step.status).textColor
-          }`}
-        >
+        <h4 className={`text-sm font-medium ${stepStatusColors.textColor}`}>
           Failure in{" "}
-          <span className={getStatusColors(step.status).baseColorText}>
-            {step.name}
-          </span>
+          <span className={stepStatusColors.baseColorText}>{step.name}</span>
         </h4>
       </div>
 
