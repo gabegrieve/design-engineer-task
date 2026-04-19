@@ -23,6 +23,8 @@ export const getStatusColors = (s: string) => {
     case "in-progress":
       return {
         bgColor: "bg-amber-50",
+        baseColorBg: "bg-amber-400",
+        baseColorText: "text-amber-400",
         borderColor: "border-amber-300",
         textColor: "text-zinc-800",
         topBorderColorHex: "#ffba4371",
@@ -31,6 +33,8 @@ export const getStatusColors = (s: string) => {
     case "complete":
       return {
         bgColor: "bg-green-50",
+        baseColorBg: "bg-green-500",
+        baseColorText: "text-green-500",
         borderColor: "border-green-300",
         textColor: "text-zinc-800",
         topBorderColorHex: "#10b98168",
@@ -38,6 +42,8 @@ export const getStatusColors = (s: string) => {
     case "failed":
       return {
         bgColor: "bg-red-50",
+        baseColorBg: "bg-red-500",
+        baseColorText: "text-red-500",
         borderColor: "border-red-200",
         textColor: "text-zinc-800",
         topBorderColorHex: "#f45f5fcc",
@@ -45,6 +51,8 @@ export const getStatusColors = (s: string) => {
     case "canceled":
       return {
         bgColor: "bg-zinc-50",
+        baseColorBg: "bg-zinc-400",
+        baseColorText: "text-zinc-400",
         borderColor: "border-zinc-300",
         textColor: "text-zinc-800",
         topBorderColorHex: "#6b7280",
@@ -52,6 +60,8 @@ export const getStatusColors = (s: string) => {
     default:
       return {
         bgColor: "bg-zinc-50",
+        baseColorBg: "bg-zinc-400",
+        baseColorText: "text-zinc-400",
         borderColor: "border-zinc-300",
         textColor: "text-zinc-800",
         topBorderColorHex: "#6b7280",
@@ -102,8 +112,7 @@ export const computeBuildStats = (steps: BuildStep[]) => {
   const parts: string[] = [];
   if (failedCount > 0)
     parts.push(`${failedCount} failed job${failedCount !== 1 ? "s" : ""}`);
-  if (blockedCount > 0)
-    parts.push(`${blockedCount} blocked`);
+  if (blockedCount > 0) parts.push(`${blockedCount} blocked`);
 
   return {
     duration: formatDuration(totalSeconds),
