@@ -49,13 +49,10 @@ export function FailureSummary({ step }: FailureSummaryProps) {
                 ) : (
                   <CircleDashed className="w-4 h-4 mr-1" aria-hidden />
                 )}
-                <span className="text-xs/4" aria-hidden>
+                <span className="text-xs/4">
                   {job.name}
+                  <span className="sr-only"> {job.status}</span>
                 </span>
-                <span
-                  className="sr-only"
-                  aria-label={`${job.name} ${job.status}`}
-                ></span>
               </div>
               {job.status === "failed" && (
                 <div

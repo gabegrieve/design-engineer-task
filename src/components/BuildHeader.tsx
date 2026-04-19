@@ -322,22 +322,6 @@ const BuildHeader: React.FC<BuildHeaderProps> = ({
                   isExpanded ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
                 }`}
               >
-                {/*
-                ──────────────────────────────────────────────────────────────────
-                DESIGN ENGINEER TASK
-  
-                Replace the placeholder div below with an expanded view that helps a
-                developer understand what happened in the build, where problems
-                occurred, and what they should inspect next.
-                
-                Notes:
-                - The progress bar above is hidden while this region is open.
-                - `buildSteps` (in src/data/mockBuildSteps.ts) is the data source.
-                - Each BuildStep can contain nested `jobs` (in types/build.ts).
-                - Everything inside is yours to structure however you want.
-                ──────────────────────────────────────────────────────────────────
-                */}
-
                 <div className="border-t border-zinc-200 mt-2 p-2 pb-0">
                   <BuildSummary buildSteps={buildSteps} />
                 </div>
