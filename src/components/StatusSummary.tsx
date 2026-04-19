@@ -4,16 +4,18 @@ import { getStatusColors, getStatusLabel } from "@/lib/buildStatus";
 export interface StatusSummaryProps {
   steps: BuildStep[];
   status: StepStatus;
+  label?: string;
 }
 
-export function StatusSummary({ status, steps }: StatusSummaryProps) {
+export function StatusSummary({ status, steps, label }: StatusSummaryProps) {
   if (!steps || steps.length === 0) return null;
 
   const statusColors = getStatusColors(status);
+  const displayLabel = label ?? getStatusLabel(status);
 
   return (
     <section
-      aria-label={`${getStatusLabel(status)} steps`}
+      aria-label={`${displayLabel} steps`}
       className="rounded-md border border-zinc-200/60 bg-white/50 px-2 py-1 shadow-sm mb-1"
     >
       <div className="flex gap-2 items-center">
@@ -27,8 +29,7 @@ export function StatusSummary({ status, steps }: StatusSummaryProps) {
           ))}
         </div>
         <h4 className={`text-sm font-medium ${statusColors.textColor}`}>
-          {steps.length} {steps.length === 1 ? "Step" : "Steps"}{" "}
-          {getStatusLabel(status)}
+          {steps.length} {steps.length === 1 ? "Step" : "Steps"} {displayLabel}
         </h4>
         <ul className="flex">
           {steps.map((step) => (

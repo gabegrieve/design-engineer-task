@@ -17,7 +17,11 @@ export function BuildSummary({ buildSteps }: BuildSummaryProps) {
       {failedSteps?.map((step) => (
         <FailureSummary key={step.id} step={step} />
       ))}
-      <StatusSummary status="pending" steps={pendingSteps} />
+      <StatusSummary
+        status="pending"
+        steps={pendingSteps}
+        label={failedSteps.length > 0 ? "Blocked" : undefined}
+      />
     </div>
   );
 }
