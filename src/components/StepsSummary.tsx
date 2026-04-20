@@ -1,13 +1,13 @@
 import { BuildStep, StepStatus } from "@/types/build";
 import { getStatusColors, getStatusLabel } from "@/lib/buildStatus";
 
-export interface StatusSummaryProps {
+export interface StepsSummaryProps {
   steps: BuildStep[];
   status: StepStatus;
   label?: string;
 }
 
-export function StatusSummary({ status, steps, label }: StatusSummaryProps) {
+export function StepsSummary({ status, steps, label }: StepsSummaryProps) {
   if (!steps || steps.length === 0) return null;
 
   const statusColors = getStatusColors(status);

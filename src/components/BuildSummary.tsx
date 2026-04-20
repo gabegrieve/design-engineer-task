@@ -1,5 +1,5 @@
 import { BuildStep } from "@/types/build";
-import { StatusSummary } from "./StatusSummary";
+import { StepsSummary } from "./StepsSummary";
 import { FailureSummary } from "./FailureSummary";
 
 export interface BuildSummaryProps {
@@ -9,19 +9,15 @@ export interface BuildSummaryProps {
 export function BuildSummary({ buildSteps }: BuildSummaryProps) {
   const completeSteps = buildSteps.filter((step) => step.status === "complete");
   const failedSteps = buildSteps.filter((step) => step.status === "failed");
-  const pendingSteps = buildSteps.filter((step) => step.status === "pending");
+  const blockedSteps = buildSteps.filter((step) => step.status === "pending");
 
   return (
     <div>
-      <StatusSummary status="complete" steps={completeSteps} />
+      <StepsSummary status="complete" steps={completeSteps} />
       {failedSteps?.map((step) => (
         <FailureSummary key={step.id} step={step} />
       ))}
-      <StatusSummary
-        status="pending"
-        steps={pendingSteps}
-        label={failedSteps.length > 0 ? "Blocked" : undefined}
-      />
+      <StepsSummary status="pending" steps={blockedSteps} label="Blocked" />
     </div>
   );
 }
