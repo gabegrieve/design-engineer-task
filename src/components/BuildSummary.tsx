@@ -13,6 +13,7 @@ export function BuildSummary({ buildSteps }: BuildSummaryProps) {
 
   return (
     <div>
+      {/* TODO: Make the order dynamic based on buildSteps */}
       <StepsSummary status="complete" steps={completeSteps} />
       {failedSteps?.map((step) => (
         <FailureSummary key={step.id} step={step} />
