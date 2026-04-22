@@ -30,6 +30,8 @@ export function FailureSummary({ step }: FailureSummaryProps) {
 
       {step.jobs && (
         <ul className="flex flex-col gap-2 my-2">
+          {/* TODO: if steps.length is > 6 it may be better to concatenate to save screen space */}
+
           {step.jobs.map((job) => (
             <li
               key={job.id}
