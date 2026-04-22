@@ -121,7 +121,7 @@ const BuildHeader: React.FC<BuildHeaderProps> = ({
                     <div className="flex items-center gap-2 flex-0">
                       <button
                         type="button"
-                        className={cn("hidden group-hover/pr:flex py-1.5 px-[7px] rounded-md transition-colors flex-shrink-0 mt-0.5 bg-blue-600")}
+                        className={cn("sr-only group-hover/pr:not-sr-only group-hover/pr:flex group-hover/pr:py-1.5 group-hover/pr:px-[7px] group-hover/pr:mt-0.5 focus-visible:not-sr-only focus-visible:flex focus-visible:py-1.5 focus-visible:px-[7px] focus-visible:mt-0.5 rounded-md transition-colors flex-shrink-0 bg-blue-600")}
                         aria-label={
                           isExpanded ? "Collapse details" : "Expand details"
                         }
@@ -138,7 +138,7 @@ const BuildHeader: React.FC<BuildHeaderProps> = ({
                         )}
                       </button>
                       {status === "failed" && (
-                        <div className="group-hover/pr:hidden">
+                        <div className="group-hover/pr:hidden group-focus-within/pr:hidden">
                           <svg
                             width="28px"
                             height="28px"
@@ -165,7 +165,7 @@ const BuildHeader: React.FC<BuildHeaderProps> = ({
                         </div>
                       )}
                       {status === "running" && (
-                        <div className="rounded-full bg-amber-500 p-1 group-hover/pr:hidden">
+                        <div className="rounded-full bg-amber-500 p-1 group-hover/pr:hidden group-focus-within/pr:hidden">
                           <Loader2
                             size={16}
                             className="text-white animate-spin"
@@ -173,7 +173,7 @@ const BuildHeader: React.FC<BuildHeaderProps> = ({
                         </div>
                       )}
                       {(status === "passed" || status === "complete") && (
-                        <div className="rounded-full bg-green-500 p-1 group-hover/pr:hidden">
+                        <div className="rounded-full bg-green-500 p-1 group-hover/pr:hidden group-focus-within/pr:hidden">
                           <Check
                             size={16}
                             className="text-white"
@@ -182,12 +182,12 @@ const BuildHeader: React.FC<BuildHeaderProps> = ({
                         </div>
                       )}
                       {status === "canceled" && (
-                        <div className="rounded-full bg-gray-400 p-1 group-hover/pr:hidden">
+                        <div className="rounded-full bg-gray-400 p-1 group-hover/pr:hidden group-focus-within/pr:hidden">
                           <X size={16} className="text-white" />
                         </div>
                       )}
                       {status === "pending" && (
-                        <div className="rounded-full bg-gray-300 p-1 group-hover/pr:hidden">
+                        <div className="rounded-full bg-gray-300 p-1 group-hover/pr:hidden group-focus-within/pr:hidden">
                           <Clock size={16} className="text-gray-600" />
                         </div>
                       )}
