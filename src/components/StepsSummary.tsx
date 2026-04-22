@@ -1,0 +1,47 @@
+import { BuildStep, StepStatus } from "@/types/build";
+import { getStatusColors, getStatusLabel } from "@/lib/buildStatus";
+
+export interface StepsSummaryProps {
+  steps: BuildStep[];
+  status: StepStatus;
+  label?: string;
+}
+
+export function StepsSummary({ status, steps, label }: StepsSummaryProps) {
+  if (!steps || steps.length === 0) return null;
+
+  const statusColors = getStatusColors(status);
+  const displayLabel = label ?? getStatusLabel(status);
+
+  return (
+    <section
+      aria-label={`${displayLabel} steps`}
+      className="rounded-md border border-zinc-200/60 bg-white/50 px-2 py-1 shadow-sm mb-1"
+    >
+      <div className="flex gap-2 items-center">
+        <div className="flex gap-1 items-center">
+          {steps.map((step) => (
+            <div
+              key={step.id}
+              className={`w-8 h-1.5 rounded-sm ${statusColors.baseColorBg}`}
+              aria-hidden
+            ></div>
+          ))}
+        </div>
+        <h4 className={`text-sm font-medium ${statusColors.textColor}`}>
+          {steps.length} {steps.length === 1 ? "Step" : "Steps"} {displayLabel}
+        </h4>
+        <ul className="flex">
+          {steps.map((step) => (
+            <li
+              className="text-xs/4 px-1 border-r last:border-r-0 border-zinc-200/60 text-zinc-400"
+              key={step.id}
+            >
+              {step.name}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
