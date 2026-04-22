@@ -1,10 +1,10 @@
 /**
  * BuildHeader component
- *
+ * 
  * This component displays the header of a build, including the pipeline name, build number, branch, pull request, status, and actions.
- *
+ * 
  *  -- NOTE: Scroll down to line 308 for the design engineer task. --
- *
+ * 
  * @param {BuildHeaderProps} props - The props for the BuildHeader component.
  * @returns {React.ReactNode} The BuildHeader component.
  */
@@ -19,8 +19,8 @@ import {
   Loader2,
 } from "lucide-react";
 import BuildActionsComboButton from "./BuildActionsComboButton";
-import { BuildSummary } from "./BuildSummary";
 import { HeaderBreadcrumbStubs } from "./HeaderBreadcrumbStubs";
+import { BuildSummary } from "./BuildSummary";
 import { BuildStep } from "@/types/build";
 import { cn } from "@/lib/utils";
 import {
@@ -72,12 +72,12 @@ const BuildHeader: React.FC<BuildHeaderProps> = ({
     status === "running"
       ? "Running for"
       : status === "failed"
-      ? "Failed in"
-      : status === "passed" || status === "complete"
-      ? "Passed in"
-      : status === "canceled"
-      ? "Canceled after"
-      : "Pending for";
+        ? "Failed in"
+        : status === "passed" || status === "complete"
+          ? "Passed in"
+          : status === "canceled"
+            ? "Canceled after"
+            : "Pending for";
 
   return (
     <div className={cn("bg-white", className)}>
@@ -89,7 +89,7 @@ const BuildHeader: React.FC<BuildHeaderProps> = ({
             ${statusColors.bgColor}
             transition-all duration-200
             shadow-[inset_0_1px_0_0_rgba(255,255,255,0.9),0_1px_3px_0_rgba(0,0,0,0.08)]`,
-            className
+            className,
           )}
           style={{
             borderColor: isHeaderHovered
@@ -121,9 +121,7 @@ const BuildHeader: React.FC<BuildHeaderProps> = ({
                     <div className="flex items-center gap-2 flex-0">
                       <button
                         type="button"
-                        className={cn(
-                          "hidden group-hover/pr:flex py-1.5 px-[7px] rounded-md transition-colors flex-shrink-0 mt-0.5 bg-blue-600"
-                        )}
+                        className={cn("hidden group-hover/pr:flex py-1.5 px-[7px] rounded-md transition-colors flex-shrink-0 mt-0.5 bg-blue-600")}
                         aria-label={
                           isExpanded ? "Collapse details" : "Expand details"
                         }
@@ -134,17 +132,9 @@ const BuildHeader: React.FC<BuildHeaderProps> = ({
                         }}
                       >
                         {isExpanded ? (
-                          <ChevronsDownUp
-                            size={14}
-                            strokeWidth={2.5}
-                            className="text-white"
-                          />
+                          <ChevronsDownUp size={14} strokeWidth={2.5} className="text-white" />
                         ) : (
-                          <ChevronsUpDown
-                            size={14}
-                            strokeWidth={2.5}
-                            className="text-white"
-                          />
+                          <ChevronsUpDown size={14} strokeWidth={2.5} className="text-white" />
                         )}
                       </button>
                       {status === "failed" && (
@@ -273,7 +263,7 @@ const BuildHeader: React.FC<BuildHeaderProps> = ({
                         (sum, s) =>
                           sum +
                           (s.jobs && s.jobs.length > 0 ? s.jobs.length : 1),
-                        0
+                        0,
                       );
                       const widthPercent = (weight / totalWeight) * 100;
 
@@ -281,19 +271,17 @@ const BuildHeader: React.FC<BuildHeaderProps> = ({
                         step.status === "complete"
                           ? "bg-green-500 hover:opacity-100 hover:bg-green-600"
                           : step.status === "in-progress"
-                          ? "bg-amber-400/40 hover:opacity-100 hover:bg-amber-600"
-                          : step.status === "failed"
-                          ? "bg-red-500 hover:bg-red-600 hover:ring-3 ring-blue-500"
-                          : "bg-zinc-300 hover:opacity-100 hover:bg-zinc-400";
+                            ? "bg-amber-400/40 hover:opacity-100 hover:bg-amber-600"
+                            : step.status === "failed"
+                              ? "bg-red-500 hover:bg-red-600 hover:ring-3 ring-blue-500"
+                              : "bg-zinc-300 hover:opacity-100 hover:bg-zinc-400";
 
                       return (
                         <div
                           key={`progress-${step.id}-${index}`}
                           className={`h-full relative overflow-hidden ${bgColor}`}
                           style={{ width: `${widthPercent}%` }}
-                          title={`${step.name} - ${getStatusLabel(
-                            step.status
-                          )}`}
+                          title={`${step.name} - ${getStatusLabel(step.status)}`}
                         >
                           {step.status === "in-progress" && (
                             <div
@@ -321,7 +309,24 @@ const BuildHeader: React.FC<BuildHeaderProps> = ({
                 className={`transition-all duration-300 ease-in-out overflow-hidden ${
                   isExpanded ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
                 }`}
-              >
+                >
+
+                {/*
+                ──────────────────────────────────────────────────────────────────
+                DESIGN ENGINEER TASK
+  
+                Replace the placeholder div below with an expanded view that helps a
+                developer understand what happened in the build, where problems
+                occurred, and what they should inspect next.
+                
+                Notes:
+                - The progress bar above is hidden while this region is open.
+                - `buildSteps` (in src/data/mockBuildSteps.ts) is the data source.
+                - Each BuildStep can contain nested `jobs` (in types/build.ts).
+                - Everything inside is yours to structure however you want.
+                ──────────────────────────────────────────────────────────────────
+                */}
+
                 <div className="border-t border-zinc-200 mt-2 p-2 pb-0">
                   <BuildSummary buildSteps={buildSteps} />
                 </div>
