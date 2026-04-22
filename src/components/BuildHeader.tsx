@@ -92,10 +92,10 @@ const BuildHeader: React.FC<BuildHeaderProps> = ({
             className,
           )}
           style={{
-            borderColor: isHeaderHovered
+            borderColor: isHeaderHovered || isExpanded
               ? "#c2bebe71"
               : statusColors.topBorderColorHex,
-            ...(isHeaderHovered && { backgroundColor: "#eff6ff" }),
+            ...((isHeaderHovered || isExpanded) && { backgroundColor: "#eff6ff" }),
           }}
         >
           {/* Breadcrumb row */}
